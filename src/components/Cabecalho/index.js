@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './cabecalho.css'
+// import './navMenu.css'
 
 class Cabecalho extends Component {
     render() {
@@ -7,9 +8,9 @@ class Cabecalho extends Component {
             <header className="cabecalho">
                 <div className="cabecalho_container container">
                     <h1 className="cabecalho_logo">
-                        <a href="">Twitelum</a>
+                        <a href="/">Twitelum</a>
                     </h1>
-                    { this.props.children}
+                    { this.props.children }
                 </div>
             </header>
         )

@@ -1,6 +1,6 @@
 /* navMenu */
 .navMenu {}
-.navMenu__lista {}
+.navMenu_lista {}
 @media (max-width: 610px) {
   .navMenu_lista {
     text-align: center;
