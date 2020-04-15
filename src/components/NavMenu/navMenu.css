@@ -2,21 +2,21 @@
 .navMenu {}
 .navMenu__lista {}
 @media (max-width: 610px) {
-  .navMenu__lista {
+  .navMenu_lista {
     text-align: center;
   }
 }
-.navMenu__item {
+.navMenu_item {
   display: inline-block;
   vertical-align: middle;
 }
-.navMenu__link {
+.navMenu_link {
   padding: 14px 10px;
   display: block;
   cursor: pointer;
 }
 @media (max-width: 610px) {
-  .navMenu__link {
+  .navMenu_link {
     padding: 14px 7px;
     font-size: 11px;
   }
