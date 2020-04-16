@@ -1,0 +1,34 @@
+/* tweet */
+.empatyState {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: calc(100% + (15px * 2));
+    margin-left: -15px; 
+  }
+  .empatyState:not(:last-child) {
+    border-bottom: 2px solid #e6ecf0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;  
+  }
+
+  .empatyState_cabecalho {
+    margin-top: 10px;
+  }
+
+  .empatyState_title {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .empatyState_conteudo {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .empatyState_footer {
+    margin-top: 20px;
+  }

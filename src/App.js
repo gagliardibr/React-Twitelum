@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard'
 import Widget from './components/Widget'
 import TrendsArea from './components/TrendsArea'
 import Tweet from './components/Tweet'
+import EmpatyState from './components/EmptyState'
 
 class App extends Component {
     render() {
@@ -16,7 +17,7 @@ class App extends Component {
                 <div className="container">
                     <Dashboard>
                         <Widget>
-                            <form className="novoTweet">
+                            <form className="novoTweet" onSubmit={this.adicionaTweet}>
                                 <div className="novoTweet_editorArea">
                                     <span className={`novoTweet_status
                                     ${ this.state.novoTweet.length > 140
@@ -44,7 +45,14 @@ class App extends Component {
                     <Dashboard posicao="centro">
                         <Widget>
                             <div className="tweetsArea">
-                                <Tweet />
+                                {this.state.showEmptyState ? <EmpatyState /> : null}
+                                {this.state.tweets.map(
+                                    (tweetInfo, index) =>
+                                        <Tweet
+                                            key={tweetInfo + index}
+                                            texto={tweetInfo}
+                                        />
+                                )}
                             </div>
                         </Widget>
                     </Dashboard>
@@ -56,7 +64,23 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            novoTweet: ''
+            showEmptyState: true,
+            novoTweet: '',
+            tweets: []
+        }
+        this.adicionaTweet = this.adicionaTweet.bind(this)
+    }
+
+    adicionaTweet(event) {
+        event.preventDefault()
+        const novoTweet = this.state.novoTweet
+        const tweetAntigos = this.state.tweets
+        if (novoTweet) {
+            this.setState({
+                tweets: [novoTweet, ...tweetAntigos],
+                novoTweet: '',
+                showEmptyState: false
+            })
         }
     }
 }

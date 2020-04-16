@@ -11,7 +11,9 @@
   padding-bottom: 15px;
   margin-bottom: 15px;  
 }
-.tweet_cabecalho {}
+.tweet_cabecalho {
+  margin-top: 10px;
+}
 .tweet_nomeUsuario {
   font-size: 14px;
   font-weight: bold;
