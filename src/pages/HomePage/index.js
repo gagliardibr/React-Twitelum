@@ -45,7 +45,7 @@ class Home extends Component {
                     <Dashboard posicao="centro">
                         <Widget>
                             <div className="tweetsArea">
-                                {this.state.showEmptyState ? <EmpatyState /> : null}
+                                {this.state.showEmptyState && <EmpatyState />}
                                 {this.state.tweets.map(
                                     (tweetInfo, index) =>
                                         <Tweet
