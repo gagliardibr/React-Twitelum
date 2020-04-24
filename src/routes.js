@@ -1,17 +1,19 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
+//import PrivateRoute from './components/AutenticaRota/privateRoute'
 
 // Páginas
 import Home from './pages/HomePage'
 import Login from './pages/LoginPage'
+import PrivateRoute from './components/AutenticaRota/privateRoute'
 
-const Roteamento = () => {
+export const Roteamento = () => {
     return (
         <Switch>
-            <Route path='/' component={Home} exact />
+            <PrivateRoute path='/' component={Home} exact />
             <Route path='/login' component={Login} />
         </Switch>
-    )
+    )  
 }
 
 export default Roteamento
