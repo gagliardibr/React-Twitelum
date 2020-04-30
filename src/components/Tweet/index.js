@@ -6,11 +6,11 @@ class Tweet extends Component {
         return (
             <article className="tweet">
                 <div className="tweet_cabecalho">
-                    <img className="tweet_fotoUsuario" src="https://placehold.it/50x50" alt="" />
-                    <span className="tweet_nomeUsuario">Fulano de Tal</span>
-                    <a href="/"><span className="tweet_userName">@usuario</span></a>
+                    <img className="tweet_fotoUsuario" src={this.props.tweetInfo.usuario.foto} alt="" />
+                    <span className="tweet_nomeUsuario">{this.props.tweetInfo.usuario.nome}</span>
+                    <a href="/"><span className="tweet_userName"> @{this.props.tweetInfo.usuario.login} </span></a>
                 </div>
-                <p className="tweet_conteudo"> { this.props.texto} </p>
+                <p className="tweet_conteudo"> {this.props.texto} </p>
                 <footer className="tweet_footer">
                     <button className="btn btn-clean">
                         <svg className="icon icon-small iconHeart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.5 47.5">

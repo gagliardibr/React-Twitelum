@@ -8,6 +8,18 @@ import Tweet from '../../components/Tweet'
 import EmpatyState from '../../components/EmptyState'
 
 class Home extends Component {
+
+    componentDidMount() {
+        fetch(`https://twitelum-api.herokuapp.com/tweets?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`)
+        .then(response => response.json())
+        .then((tweets, showEmptyState) => {
+            this.setState({
+                tweets,
+                showEmptyState
+            })
+        })
+    }
+
     render() {
         return (
             <Fragment>
@@ -49,8 +61,9 @@ class Home extends Component {
                                 {this.state.tweets.map(
                                     (tweetInfo, index) =>
                                         <Tweet
-                                            key={tweetInfo + index}
-                                            texto={tweetInfo}
+                                            key={tweetInfo._id}
+                                            texto={tweetInfo.conteudo}
+                                            tweetInfo={tweetInfo}
                                         />
                                 )}
                             </div>
@@ -76,11 +89,20 @@ class Home extends Component {
         const novoTweet = this.state.novoTweet
         const tweetAntigos = this.state.tweets
         if (novoTweet) {
-            this.setState({
-                tweets: [novoTweet, ...tweetAntigos],
-                novoTweet: '',
-                showEmptyState: false
-            })
+            fetch(`https://twitelum-api.herokuapp.com/tweets?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
+                , {
+                    method: 'POST',
+                    body: JSON.stringify({ conteudo: novoTweet })
+                })
+                .then(response => response.json())
+                .then((novoTweetRegistradoNoServer) => {
+                    this.setState({
+                        tweets: [novoTweetRegistradoNoServer, ...tweetAntigos],
+                        novoTweet: '',
+                        showEmptyState: false
+                    })
+                })
+
         }
     }
 }
