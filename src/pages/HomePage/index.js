@@ -11,13 +11,13 @@ class Home extends Component {
 
     componentDidMount() {
         fetch(`https://twitelum-api.herokuapp.com/tweets?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`)
-        .then(response => response.json())
-        .then((tweets, showEmptyState) => {
-            this.setState({
-                tweets,
-                showEmptyState
+            .then(response => response.json())
+            .then((tweets, showEmptyState) => {
+                this.setState({
+                    tweets,
+                    showEmptyState
+                })
             })
-        })
     }
 
     render() {
