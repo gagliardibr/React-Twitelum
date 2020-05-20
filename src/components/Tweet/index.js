@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './tweet.css'
 
 class Tweet extends Component {
@@ -50,12 +51,27 @@ class Tweet extends Component {
             totalLikes: likeado ? totalLikes - 1 : totalLikes + 1
         })
 
-        fetch(`https://twitelum-api.herokuapp.com/tweets/${this.props.tweetInfo._nitid}/like?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
+        fetch(`https://twitelum-api.herokuapp.com/tweets/${this.props.tweetInfo._gitid}/like?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
         , { method: 'POST' })
         .then( response => response.json() )
         .then( response => console.log(response) )
     }
 
 }
+
+Tweet.propTypes = {
+    removeHandler: PropTypes.func.isRequired,
+    texto: PropTypes.string.isRequired,
+    tweetInfo: PropTypes.shape({
+        _id: PropTypes.string,
+        likeado: PropTypes.bool,
+        totalLikes: PropTypes.number,
+        usuario: PropTypes.shape({
+            foto: PropTypes.string,
+            nome: PropTypes.string,
+            login: PropTypes.string
+        }),
+    })
+};
 
 export default Tweet
