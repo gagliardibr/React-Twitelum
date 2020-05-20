@@ -51,7 +51,7 @@ class Tweet extends Component {
             totalLikes: likeado ? totalLikes - 1 : totalLikes + 1
         })
 
-        fetch(`https://twitelum-api.herokuapp.com/tweets/${this.props.tweetInfo._gitid}/like?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
+        fetch(`https://twitelum-api.herokuapp.com/tweets/${this.props.tweetInfo._id}/like?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
         , { method: 'POST' })
         .then( response => response.json() )
         .then( response => console.log(response) )
