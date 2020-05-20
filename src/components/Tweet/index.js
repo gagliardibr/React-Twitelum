@@ -25,6 +25,11 @@ class Tweet extends Component {
                         </svg>
                         {this.state.totalLikes}
                     </button>
+                    {this.props.tweetInfo.removivel && 
+                    <button onClick={this.props.removeHandler} className= "btn btn-blue btn-remove">
+                        X
+                    </button>
+                    }
                 </footer>
             </article>
         )
@@ -45,7 +50,7 @@ class Tweet extends Component {
             totalLikes: likeado ? totalLikes - 1 : totalLikes + 1
         })
 
-        fetch(`https://twitelum-api.herokuapp.com/tweets/${this.props.tweetInfo._id}/like?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
+        fetch(`https://twitelum-api.herokuapp.com/tweets/${this.props.tweetInfo._nitid}/like?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
         , { method: 'POST' })
         .then( response => response.json() )
         .then( response => console.log(response) )

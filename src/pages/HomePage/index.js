@@ -62,6 +62,7 @@ class Home extends Component {
                                     (tweetInfo, index) =>
                                         <Tweet
                                             key={tweetInfo._id}
+                                            removeHandler= {(event) => this.removeTweet(tweetInfo._id)}
                                             texto={tweetInfo.conteudo}
                                             tweetInfo={tweetInfo}
                                         />
@@ -105,6 +106,23 @@ class Home extends Component {
 
         }
     }
+
+    removeTweet(idTweetQueVaiSerRemovido) {
+        console.log(idTweetQueVaiSerRemovido)
+        fetch(`https://twitelum-api.herokuapp.com/tweets/${idTweetQueVaiSerRemovido}?X-AUTH-TOKEN=${localStorage.getItem('TOKEN')}`
+                , {
+                    method: 'DELETE',
+                })
+                .then((data) => data.json())
+                .then((response) => {
+                    console.log(response)
+                    const listaDeTweetsAtualizada = this.state.tweets.filter( (tweet) => tweet._id !== idTweetQueVaiSerRemovido )
+                    this.setState({
+                        tweets: listaDeTweetsAtualizada
+                    })
+                })
+    }
+
 }
 
 
